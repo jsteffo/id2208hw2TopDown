@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.example.org/registrated/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="registrated"
+	targetNamespace="http://www.example.org/registrated/">
+	<wsdl:types>
+		<xsd:schema>
+			<xsd:import namespace="http://www.example.org/registrated/" schemaLocation="registrated.xsd"></xsd:import>
+		</xsd:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="getAuthToken">
+		<wsdl:part name="parameters" element="tns:getAuthToken"/>
+	</wsdl:message>
+	
+	<wsdl:message name="getAuthTokenResponse">
+		<wsdl:part name="parameters" element="tns:getAuthTokenResponse"/>
+	</wsdl:message>
+	
+	<wsdl:portType name="Authentication">
+		<wsdl:operation name="getAuthToken">
+			<wsdl:input message="tns:getAuthToken"/>
+			<wsdl:output message="tns:getAuthTokenResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	
+	<wsdl:binding name="AuthenticationServiceSoapBinding" type="tns:Authentication">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+		<wsdl:operation name="getAuthToken">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	
+	<wsdl:service name="AuthenticationService">
+		<wsdl:port name="AuthenticationPort" binding="tns:AuthenticationServiceSoapBinding">
+			<soap:address location="http://localhost:8080/id2208webServicesBotUp/AuthenticationService"/>
+		</wsdl:port>
+	</wsdl:service>
+	
+</wsdl:definitions>

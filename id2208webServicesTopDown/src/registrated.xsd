@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/registrated/"
+	xmlns:tns="http://www.example.org/registrated/" elementFormDefault="qualified">
+	
+	<xsd:element name="getAuthToken" type ="tns:getAuthToken"/>
+	<xsd:element name="getAuthTokenResponse" type="tns:getAuthTokenResponse"/>
+	
+	<!-- 		Exakt vad gör minOccurs i detta sammanhang med element nedan? -->
+	<xsd:complexType name="getAuthToken">
+		<xsd:sequence>
+
+			<xsd:element name="arg1" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="getAuthTokenResponse">
+		<xsd:sequence>
+			<xsd:element name="return" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
